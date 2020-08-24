@@ -1,0 +1,3 @@
+Projekt tworzony z potrzeby zapoznania się z system zarządzania bazami danych PostgreSQL.
+Docelowo aplikacja będzie miała za zadanie wspomagać trening siłowy. Na podstawie wprowadzanych przez użytkownika danych, odnośnie podnoszonych podczas treningu ciężarów, aplikacja będzie miała za zadanie obliczać teoretyczny progres siłowy.
+W pierwszej fazie projekt zakłada zbieranie danych o sumarycznej ilości podniesionych kilogramów w danym ćwiczeniu danego dnia. 

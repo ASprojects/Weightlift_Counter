@@ -1,0 +1,56 @@
+{% extends "weight.html" %}
+
+{% block content %}
+
+<section>
+
+    <form action="/counting" method="POST" novalidate>
+
+        {{ form.hidden_tag() }}
+        {{ form.csrf_token }}
+
+        <p>
+            {{ form.bodypart.label }}<br>
+            {{ form.bodypart() }}
+            {% for error in form.bodypart.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.exercise.label }}<br>
+            {{ form.exercise() }}
+            {% for error in form.exercise.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.series.label }}<br>
+            {{ form.series() }}
+            {% for error in form.series.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.reps.label }}<br>
+            {{ form.reps() }}
+            {% for error in form.reps.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.weight.label }}<br>
+            {{ form.weight() }}
+            {% for error in form.weight.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+       <p>{{ form.submit() }}</p>
+    </form>
+</section>
+
+{% endblock %}
