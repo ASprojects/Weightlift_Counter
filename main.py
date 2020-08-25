@@ -1,29 +1,15 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template
 from app_func import WeightForm
-import psycopg2 as pg2
-from config_pass import password
-
 
 app = Flask(__name__, template_folder='templates')
 app.secret_key = 'Wow, that\'s secret'
 
-'''
-connection = pg2.connect(user="postgres",
-                            password=password,
-                            host="127.0.0.1",
-                            port="5432",
-                            database="weightlifting_counter")
-'''
 
-@app.route('/weight')
+@app.route('/')
 def weight():
     form = WeightForm()
     return render_template("weight.html", form=form)
 
-@app.route("/admin")
-def admin():
-    return redirect(url_for("weight"))
-#redirects to the main site
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
