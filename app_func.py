@@ -10,4 +10,4 @@ class WeightForm(FlaskForm):
                            validators=[DataRequired()])
     series = IntegerField('Number of serie', [NumberRange(min=0, max=10)])
     reps = IntegerField('How many reps?', [NumberRange(min=0, max=10)])
-    weight = FloatField('What weight?', [NumberRange(min=0, max=10)])
+    weight = FloatField('What weight?', [NumberRange(min=0, max=100)])

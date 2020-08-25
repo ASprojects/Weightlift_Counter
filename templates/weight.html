@@ -1,14 +1,10 @@
-{% extends "weight.html" %}
+<!doctype html>
+<html>
+<head>
+    <title>Yo, weightliftin counter!</title>
+</head>
 
-{% block content %}
-
-<section>
-
-    <form action="/counting" method="POST" novalidate>
-
-        {{ form.hidden_tag() }}
-        {{ form.csrf_token }}
-
+<body>
         <p>
             {{ form.bodypart.label }}<br>
             {{ form.bodypart() }}
@@ -16,7 +12,6 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-
         <p>
             {{ form.exercise.label }}<br>
             {{ form.exercise() }}
@@ -24,7 +19,6 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-
         <p>
             {{ form.series.label }}<br>
             {{ form.series() }}
@@ -32,7 +26,6 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-
         <p>
             {{ form.reps.label }}<br>
             {{ form.reps() }}
@@ -40,7 +33,6 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-
         <p>
             {{ form.weight.label }}<br>
             {{ form.weight() }}
@@ -48,9 +40,6 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
+</body>
 
-       <p>{{ form.submit() }}</p>
-    </form>
-</section>
-
-{% endblock %}
+</html>
