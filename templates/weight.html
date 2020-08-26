@@ -2,6 +2,10 @@
 <html>
 <head>
     <title>Yo, weightliftin counter!</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 
 <body>
@@ -40,6 +44,26 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
+        <form method="POST" action="/calculate">
+        <p>
+            {{ form.submit.button }}<br>
+            {{ form.submit() }}
+            {% for error in form.weight.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        </form>
+
+        <form method="POST" action="/edit">
+        <p>
+            {{ form.edit.button }}<br>
+            {{ form.edit() }}
+            {% for error in form.weight.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        </form>
+
 </body>
 
 </html>
