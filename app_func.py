@@ -16,4 +16,3 @@ class WeightForm(FlaskForm):
     weight = FloatField('What weight?', [NumberRange(min=0, max=100)])
     submit = SubmitField('Calculate')
     edit = SubmitField('Edit')
-

@@ -9,6 +9,7 @@
 </head>
 
 <body>
+        <form method="POST" action="/calculate">
         <p>
             {{ form.bodypart.label }}<br>
             {{ form.bodypart() }}
@@ -44,7 +45,6 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <form method="POST" action="/calculate">
         <p>
             {{ form.submit.button }}<br>
             {{ form.submit() }}
@@ -53,7 +53,6 @@
             {% endfor %}
         </p>
         </form>
-
         <form method="POST" action="/edit">
         <p>
             {{ form.edit.button }}<br>

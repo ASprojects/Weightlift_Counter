@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from app_func import WeightForm
 import pandas as pd
-
+from querries import exercise_df
 
 app = Flask(__name__, template_folder='templates')
 app.secret_key = 'Wow, that\'s secret'
@@ -19,10 +19,11 @@ def calculating():
         'series': int(request.form.getlist("series")[0]),
         'reps': int(request.form.getlist('reps')[0]),
         'weight': float(request.form.getlist('weight')[0]),
-        }
+        'bodypart': request.form.getlist('bodypart')[0],
+        'exercise': request.form.getlist('exercise')[0],
+    }
     workday_df = pd.DataFrame(workday, index=[0])
-
-    return workday_df
+    return workday_df.to_dict()
 
 
 @app.route('/edit', methods=['POST'])
