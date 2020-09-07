@@ -9,8 +9,9 @@ class WeightForm(FlaskForm):
                            validators=[DataRequired()])
     exercise = SelectField('Exercise', choices=exercise_df['exercise'].to_list(),
                            validators=[DataRequired()])
-    series = IntegerField('Number of serie', [NumberRange(min=0, max=10)])
-    reps = IntegerField('How many reps?', [NumberRange(min=0, max=10)])
-    weight = FloatField('What weight?', [NumberRange(min=0, max=100)])
+    series = IntegerField('Number of serie', validators=[NumberRange(min=1, max=10, message="chose from 1 to 10")])
+    reps = IntegerField('How many reps?', validators=[NumberRange(min=1, max=10, message="chose from 1 to 10")])
+    weight = FloatField('What weight?', validators=[NumberRange(min=1, max=100, message="chose from 1 to 100")])
     submit = SubmitField('Calculate')
-    edit = SubmitField('Edit')
+    edit = SubmitField('View/Edit')
+    clear = SubmitField('Clear all data')

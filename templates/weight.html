@@ -62,7 +62,15 @@
             {% endfor %}
         </p>
         </form>
-
+                <form method="POST" action="/clear">
+        <p>
+            {{ form.clear.button }}<br>
+            {{ form.clear() }}
+            {% for error in form.weight.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        </form>
 </body>
 
 </html>
