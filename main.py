@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from app_func import WeightForm
+from app_func import WeightForm, SummaryForm
 import pandas as pd
 from querries import exercise_df, bodypart_df, connection
 import datetime
@@ -40,6 +40,20 @@ def calculating():
     return redirect(url_for("weight"))
 
 
+
+@app.route('/summary', methods=['POST'])
+def summary():
+    form = SummaryForm()
+    return render_template("summary.html", form=form)
+
+
+
+@app.route('/sum_trening', methods=['POST'])
+def sum_trening():
+    return "new things gonna come out here"
+
+
+
 @app.route('/edit', methods=['POST'])
 def editing():
     cur = connection.cursor()
@@ -48,11 +62,16 @@ def editing():
     trenings_df = pd.DataFrame(trenings_data, columns=['data', 'exercise', 'reps', 'serie', 'weight'])
     return trenings_df.to_html()
 
+
+
 @app.route('/clear', methods=['POST'])
 def clearing():
     cur = connection.cursor()
     cur.execute('DELETE FROM public.trening;')
+    connection.commit()
     return "cleared all the data"
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)

@@ -15,3 +15,13 @@ class WeightForm(FlaskForm):
     submit = SubmitField('Calculate')
     edit = SubmitField('View/Edit')
     clear = SubmitField('Clear all data')
+    summary = SubmitField('Go to summary page')
+
+
+
+class SummaryForm(FlaskForm):
+
+    trening = SelectField('Trening date', choices=[],
+                           validators=[DataRequired()])
+    submit = SubmitField('Show summary')
+    back = SubmitField('Go back')

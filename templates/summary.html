@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yo, weightliftin counter!</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+            <form method="POST" action="/sum_trening">
+            <p>
+                {{ form.trening.label }}<br>
+                {{ form.trening() }}
+                {% for error in form.trening.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.submit.button }}<br>
+                {{ form.submit() }}
+                {% for error in form.submit.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            </form>
+            <form method="POST" action="/">
+            <p>
+                {{ form.back.button }}<br>
+                {{ form.back() }}
+                {% for error in form.back.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            </form>
+</body>
+</html>

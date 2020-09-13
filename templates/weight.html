@@ -48,7 +48,17 @@
         <p>
             {{ form.submit.button }}<br>
             {{ form.submit() }}
-            {% for error in form.weight.errors %}
+            {% for error in form.submit.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        </form>
+
+        <form method="POST" action="/summary">
+        <p>
+            {{ form.summary.button }}<br>
+            {{ form.summary() }}
+            {% for error in form.summary.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
@@ -57,18 +67,19 @@
         <p>
             {{ form.edit.button }}<br>
             {{ form.edit() }}
-            {% for error in form.weight.errors %}
+            {% for error in form.edit.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         </form>
-                <form method="POST" action="/clear">
+        <form method="POST" action="/clear">
         <p>
             {{ form.clear.button }}<br>
             {{ form.clear() }}
-            {% for error in form.weight.errors %}
+            {% for error in form.clear.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
+            <b>Warning! It clears all the stored data!</b>
         </p>
         </form>
 </body>
