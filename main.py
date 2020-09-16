@@ -4,6 +4,7 @@ import pandas as pd
 from querries import exercise_df, bodypart_df, connection
 import datetime
 
+
 app = Flask(__name__, template_folder='templates')
 app.secret_key = 'Wow, that\'s secret'
 
@@ -12,6 +13,7 @@ app.secret_key = 'Wow, that\'s secret'
 def weight():
     form = WeightForm()
     return render_template("weight.html", form=form)
+
 
 
 @app.route('/calculate', methods=['POST'])
@@ -59,7 +61,7 @@ def editing():
     cur = connection.cursor()
     cur.execute('SELECT * FROM trening;')
     trenings_data = cur.fetchall()
-    trenings_df = pd.DataFrame(trenings_data, columns=['data', 'exercise', 'reps', 'serie', 'weight'])
+    trenings_df = pd.DataFrame(trenings_data, columns=['data', 'exercise', 'reps', 'series', 'weight'])
     return trenings_df.to_html()
 
 
@@ -75,4 +77,4 @@ def clearing():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
-#runs the app
+#runs the

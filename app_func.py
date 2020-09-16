@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import SelectField, IntegerField, FloatField, SubmitField
 from wtforms.validators import DataRequired, NumberRange
-from querries import bodypart_df, exercise_df
+from querries import bodypart_df, exercise_df, trening_df
 
 class WeightForm(FlaskForm):
 
@@ -21,7 +21,7 @@ class WeightForm(FlaskForm):
 
 class SummaryForm(FlaskForm):
 
-    trening = SelectField('Trening date', choices=[],
+    trening = SelectField('Choose trening date', choices=[trening_df['data'].to_frame()],
                            validators=[DataRequired()])
     submit = SubmitField('Show summary')
     back = SubmitField('Go back')
