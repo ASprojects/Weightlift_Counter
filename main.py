@@ -43,16 +43,27 @@ def calculating():
 
 
 
-@app.route('/summary', methods=['POST'])
-def summary():
+@app.route('/summary_day', methods=['POST'])
+def summary_day():
     form = SummaryForm()
     return render_template("summary.html", form=form)
-
+def sum_querry():
+    cur = connection.cursor()
+    cur.execute('SELECT * FROM trening;')
+    tren_sum_data = cur.fetchall()
+    tren_sum_df = pd.DataFrame(tren_sum_data, columns=['data', 'exercise_id', 'reps', 'series', 'weight'])
+    return tren_sum_df
 
 
 @app.route('/sum_trening', methods=['POST'])
 def sum_trening():
-    return "new things gonna come out here"
+    get_choice = str(request.form.getlist("trening"))
+    trening_choice = """ SELECT * FROM trening WHERE data='%s';""" % get_choice[2:-2]
+    cur = connection.cursor()
+    cur.execute(trening_choice)
+    trening_choice_data = cur.fetchall()
+    trening_choice_df = pd.DataFrame(trening_choice_data, columns=['data', 'exercise', 'reps', 'series', 'weight'])
+    return trening_choice_df.to_html()
 
 
 
@@ -77,4 +88,4 @@ def clearing():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
-#runs the
+#runs the app

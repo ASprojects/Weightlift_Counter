@@ -19,7 +19,3 @@ bodypart_df = pd.DataFrame(bodypart_data, columns=['body_part_id','body_part'])
 cur.execute('SELECT * FROM exercises;')
 exercise_data = cur.fetchall()
 exercise_df = pd.DataFrame(exercise_data, columns=['exercise_id','exercise','body_part_id'])
-
-cur.execute('SELECT * FROM trening;')
-trening_data = cur.fetchall()
-trening_df = pd.DataFrame(trening_data, columns=['data','exercise_id','reps','series','weight'])
