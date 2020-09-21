@@ -47,12 +47,7 @@ def calculating():
 def summary_day():
     form = SummaryForm()
     return render_template("summary.html", form=form)
-def sum_querry():
-    cur = connection.cursor()
-    cur.execute('SELECT * FROM trening;')
-    tren_sum_data = cur.fetchall()
-    tren_sum_df = pd.DataFrame(tren_sum_data, columns=['data', 'exercise_id', 'reps', 'series', 'weight'])
-    return tren_sum_df
+
 
 
 @app.route('/sum_trening', methods=['POST'])

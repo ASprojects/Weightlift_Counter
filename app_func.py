@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import SelectField, IntegerField, FloatField, SubmitField
 from wtforms.validators import DataRequired, NumberRange
-from querries import bodypart_df, exercise_df
-from main import sum_querry
+from querries import bodypart_df, exercise_df, sum_querry
+
 
 class WeightForm(FlaskForm):
 
