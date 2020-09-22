@@ -26,3 +26,4 @@ class SummaryForm(FlaskForm):
                            validators=[DataRequired()])
     submit = SubmitField('Show summary')
     back = SubmitField('Go back')
+    refresh = SubmitField('Refresh')

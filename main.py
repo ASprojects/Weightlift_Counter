@@ -62,6 +62,13 @@ def sum_trening():
 
 
 
+@app.route('/refreshing', methods=['POST'])
+def refresh():
+    pass
+    return redirect(url_for("weight"))
+
+
+
 @app.route('/edit', methods=['POST'])
 def editing():
     cur = connection.cursor()

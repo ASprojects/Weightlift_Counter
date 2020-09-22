@@ -33,5 +33,16 @@
                 {% endfor %}
             </p>
             </form>
+
+            <form method="POST" action="/summary_day">
+            <p>
+                {{ form.refresh.button }}<br>
+                {{ form.refresh() }}
+                {% for error in form.refresh.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            </form>
+
 </body>
 </html>
