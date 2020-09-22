@@ -1,7 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import SelectField, IntegerField, FloatField, SubmitField
 from wtforms.validators import DataRequired, NumberRange
-from querries import bodypart_df, exercise_df
+from querries import bodypart_df, exercise_df, sum_querry
+
 
 class WeightForm(FlaskForm):
 
@@ -21,9 +22,7 @@ class WeightForm(FlaskForm):
 
 class SummaryForm(FlaskForm):
 
-    def __init__(self, sumquery_frame):
-
-        self.trening = SelectField('Choose trening date', choices=sumquery_frame['data'].to_list(),
-                               validators=[DataRequired()])
-        self.submit = SubmitField('Show summary')
-        self.back = SubmitField('Go back')
+    trening = SelectField('Choose trening date', choices=sum_querry()['data'].to_list(),
+                           validators=[DataRequired()])
+    submit = SubmitField('Show summary')
+    back = SubmitField('Go back')

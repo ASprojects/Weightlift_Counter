@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from app_func import WeightForm, SummaryForm
 import pandas as pd
-from querries import exercise_df, bodypart_df, connection, sum_querry
+from querries import exercise_df, bodypart_df, connection
 import datetime
 
 
@@ -45,8 +45,7 @@ def calculating():
 
 @app.route('/summary_day', methods=['POST'])
 def summary_day():
-    sumquery_frame = sum_querry()
-    form = SummaryForm(sumquery_frame)
+    form = SummaryForm()
     return render_template("summary.html", form=form)
 
 
