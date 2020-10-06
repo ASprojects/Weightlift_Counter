@@ -4,7 +4,6 @@ import pandas as pd
 from querries import exercise_df, bodypart_df, connection
 import datetime
 
-
 app = Flask(__name__, template_folder='templates')
 app.secret_key = 'Wow, that\'s secret'
 
@@ -13,7 +12,6 @@ app.secret_key = 'Wow, that\'s secret'
 def weight():
     form = WeightForm()
     return render_template("weight.html", form=form)
-
 
 
 @app.route('/calculate', methods=['POST'])
@@ -26,8 +24,8 @@ def calculating():
         'exercise': request.form.getlist('exercise')[0],
     }
 
-    workday_df = pd.DataFrame(workday, index=[0]) #pandas dataframe from dict
-    workday_df_trening = workday_df.merge(exercise_df, on='exercise', how="left").merge(bodypart_df, on=['body_part_id','body_part'], how="left") #joining all dframes
+    workday_df = pd.DataFrame(workday, index=[0])  # pandas dataframe from dict
+    workday_df_trening = workday_df.merge(exercise_df, on='exercise', how="left").merge(bodypart_df, on=['body_part_id', 'body_part'], how="left")  # joining all dframes
 
     cur = connection.cursor()
     addtrening = """
@@ -42,12 +40,10 @@ def calculating():
     return redirect(url_for("weight"))
 
 
-
 @app.route('/summary_day', methods=['POST'])
 def summary_day():
     form = SummaryForm()
     return render_template("summary.html", form=form)
-
 
 
 @app.route('/sum_trening', methods=['POST'])
@@ -61,12 +57,10 @@ def sum_trening():
     return trening_choice_df.to_html()
 
 
-
 @app.route('/refreshing', methods=['POST'])
 def refresh():
     pass
     return redirect(url_for("weight"))
-
 
 
 @app.route('/edit', methods=['POST'])
@@ -78,7 +72,6 @@ def editing():
     return trenings_df.to_html()
 
 
-
 @app.route('/clear', methods=['POST'])
 def clearing():
     cur = connection.cursor()
@@ -87,7 +80,7 @@ def clearing():
     return "cleared all the data"
 
 
-
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
-#runs the app
+
+#  runs the app

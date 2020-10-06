@@ -19,11 +19,9 @@ class WeightForm(FlaskForm):
     summary = SubmitField('Go to summary page')
 
 
-
 class SummaryForm(FlaskForm):
 
-    trening = SelectField('Choose trening date', choices=sum_querry()['data'].to_list(),
-                           validators=[DataRequired()])
+    trening = SelectField('Choose trening date', choices=sum_querry()['data'].to_list(), validators=[DataRequired()])
     submit = SubmitField('Show summary')
     back = SubmitField('Go back')
     refresh = SubmitField('Refresh')
