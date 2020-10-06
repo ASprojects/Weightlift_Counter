@@ -3,5 +3,4 @@
 __pycache__
 venv/
 exercises.docx
-config_pass
-
+config_pass.py
