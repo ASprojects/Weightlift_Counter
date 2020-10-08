@@ -23,5 +23,6 @@ class SummaryForm(FlaskForm):
 
     trening = SelectField('Choose trening date', choices=sum_querry()['data'].to_list(), validators=[DataRequired()])
     submit = SubmitField('Show summary')
+    view = SubmitField('View')
     back = SubmitField('Go back')
     refresh = SubmitField('Refresh')

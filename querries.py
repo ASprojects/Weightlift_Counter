@@ -22,7 +22,7 @@ exercise_df = pd.DataFrame(exercise_data, columns=['exercise_id', 'exercise', 'b
 
 
 def sum_querry():
-    cur.execute('SELECT * FROM trening;')
+    cur.execute('SELECT DISTINCT data FROM trening ORDER BY data ASC;')
     tren_sum_data = cur.fetchall()
-    tren_sum_df = pd.DataFrame(tren_sum_data, columns=['data', 'exercise_id', 'reps', 'series', 'weight'])
+    tren_sum_df = pd.DataFrame(tren_sum_data, columns=['data'])
     return tren_sum_df

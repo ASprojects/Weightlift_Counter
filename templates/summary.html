@@ -24,6 +24,15 @@
                 {% endfor %}
             </p>
             </form>
+            <form method="POST" action="/view">
+            <p>
+                {{ form.view.button }}<br>
+                {{ form.view() }}
+                {% for error in form.view.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            </form>
             <form method="POST" action="/">
             <p>
                 {{ form.back.button }}<br>
