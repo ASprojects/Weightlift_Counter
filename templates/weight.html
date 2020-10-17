@@ -9,79 +9,79 @@
 </head>
 
 <body>
-        <form method="POST" action="/calculate">
-        <p>
-            {{ form.bodypart.label }}<br>
-            {{ form.bodypart() }}
-            {% for error in form.bodypart.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.exercise.label }}<br>
-            {{ form.exercise() }}
-            {% for error in form.exercise.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.series.label }}<br>
-            {{ form.series() }}
-            {% for error in form.series.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.reps.label }}<br>
-            {{ form.reps() }}
-            {% for error in form.reps.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.weight.label }}<br>
-            {{ form.weight() }}
-            {% for error in form.weight.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.submit.button }}<br>
-            {{ form.submit() }}
-            {% for error in form.submit.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        </form>
+<form method="POST" action="/calculate">
+    <p>
+        {{ form.bodypart.label }}<br>
+        {{ form.bodypart() }}
+        {% for error in form.bodypart.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.exercise.label }}<br>
+        {{ form.exercise() }}
+        {% for error in form.exercise.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.series.label }}<br>
+        {{ form.series() }}
+        {% for error in form.series.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.reps.label }}<br>
+        {{ form.reps() }}
+        {% for error in form.reps.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.weight.label }}<br>
+        {{ form.weight() }}
+        {% for error in form.weight.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.submit.button }}<br>
+        {{ form.submit() }}
+        {% for error in form.submit.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+</form>
 
-        <form method="POST" action="/summary_day">
-        <p>
-            {{ form.summary.button }}<br>
-            {{ form.summary() }}
-            {% for error in form.summary.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        </form>
-        <form method="POST" action="/edit">
-        <p>
-            {{ form.edit.button }}<br>
-            {{ form.edit() }}
-            {% for error in form.edit.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        </form>
-        <form method="POST" action="/clear">
-        <p>
-            {{ form.clear.button }}<br>
-            {{ form.clear() }}
-            {% for error in form.clear.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-            <b>Warning! It clears all the stored data!</b>
-        </p>
-        </form>
+<form method="POST" action="/summary_day">
+    <p>
+        {{ form.summary.button }}<br>
+        {{ form.summary() }}
+        {% for error in form.summary.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+</form>
+<form method="POST" action="/edit">
+    <p>
+        {{ form.edit.button }}<br>
+        {{ form.edit() }}
+        {% for error in form.edit.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+</form>
+<form method="POST" action="/clear">
+    <p>
+        {{ form.clear.button }}<br>
+        {{ form.clear() }}
+        {% for error in form.clear.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+        <b>Warning! It clears all the stored data!</b>
+    </p>
+</form>
 </body>
 
 </html>

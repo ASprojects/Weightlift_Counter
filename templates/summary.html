@@ -8,50 +8,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
-            <form method="POST" action="/sum_trening">
-            <p>
-                {{ form.trening.label }}<br>
-                {{ form.trening() }}
-                {% for error in form.trening.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            <p>
-                {{ form.submit.button }}<br>
-                {{ form.submit() }}
-                {% for error in form.submit.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            </form>
-            <form method="POST" action="/view">
-            <p>
-                {{ form.view.button }}<br>
-                {{ form.view() }}
-                {% for error in form.view.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            </form>
-            <form method="POST" action="/">
-            <p>
-                {{ form.back.button }}<br>
-                {{ form.back() }}
-                {% for error in form.back.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            </form>
-
-            <form method="POST" action="/summary_day">
-            <p>
-                {{ form.refresh.button }}<br>
-                {{ form.refresh() }}
-                {% for error in form.refresh.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            </form>
-
+<form method="POST" name='test1' action="/sum_trening">
+    <p>
+        {{ form.trening.label }}<br>
+        {{ form.trening() }}
+        {% for error in form.trening.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.submit.button }}<br>
+        {{ form.submit() }}
+        {% for error in form.submit.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+</form>
+<form method="POST" action="/">
+    <p>
+        {{ form.back.button }}<br>
+        {{ form.back() }}
+        {% for error in form.back.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+</form>
 </body>
 </html>

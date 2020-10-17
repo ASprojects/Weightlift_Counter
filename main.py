@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from app_func import WeightForm, SummaryForm
 import pandas as pd
-from querries import exercise_df, bodypart_df, connection, sum_querry
+from querries import exercise_df, bodypart_df, connection
 import datetime
 
 app = Flask(__name__, template_folder='templates')
@@ -53,32 +53,13 @@ def summary_day():
 @app.route('/sum_trening', methods=['POST'])
 def sum_trening():
     get_choice = str(request.form.getlist("trening"))
-    trening_choice = """ SELECT * FROM trening WHERE data='%s';""" % get_choice[2:-2]
+    trening_choice = """SELECT * FROM trening_stats WHERE data='%s';""" % get_choice[2:-2]
     cur = connection.cursor()
     cur.execute(trening_choice)
     trening_choice_data = cur.fetchall()
-    trening_choice_df = pd.DataFrame(trening_choice_data, columns=['data', 'exercise', 'reps', 'series', 'weight'])
+    cols = [desc[0] for desc in cur.description]
+    trening_choice_df = pd.DataFrame(trening_choice_data, columns=cols)
     return trening_choice_df.to_html()
-
-
-@app.route('/view', methods=['POST'])
-def view():
-    get_choice2 = str(request.form.getlist("trening"))
-    view_choice = """SELECT exercise_id,
-                     reps * series * weight as total_lifted_weight
-                     FROM trening WHERE data='%s';""" % get_choice2[2:-2]
-    cur = connection.cursor()
-    cur.execute(view_choice)
-    view_sum_data = cur.fetchall()
-    view_sum_df = pd.DataFrame(view_sum_data, columns=['exercise', 'total_lifted_weight'])
-    print(get_choice2)
-    return view_sum_df.to_html
-
-
-@app.route('/refreshing', methods=['POST'])
-def refresh():
-    sum_querry()
-    return redirect(url_for("weight"))
 
 
 @app.route('/edit', methods=['POST'])
