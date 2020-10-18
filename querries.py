@@ -10,19 +10,15 @@ connection = pg2.connect(user="postgres",
 
 cur = connection.cursor()
 
+def showall():
+    cur = connection.cursor()
+    cur.execute('SELECT * FROM trening;')
+    trenings_data = cur.fetchall()
+    trenings_df = pd.DataFrame(trenings_data, columns=['data', 'exercise', 'reps', 'series', 'weight'])
+    return trenings_df
 
-cur.execute('SELECT * FROM bodyparts;')
-bodypart_data = cur.fetchall()  # data from db
-bodypart_df = pd.DataFrame(bodypart_data, columns=['body_part_id', 'body_part'])
-
-
-cur.execute('SELECT * FROM exercises;')
-exercise_data = cur.fetchall()
-exercise_df = pd.DataFrame(exercise_data, columns=['exercise_id', 'exercise', 'body_part_id'])
-
-
-def sum_querry():
-    cur.execute('SELECT DISTINCT data FROM trening ORDER BY data ASC;')
-    tren_sum_data = cur.fetchall()
-    tren_sum_df = pd.DataFrame(tren_sum_data, columns=['data'])
-    return tren_sum_df
+def clear():
+    cur = connection.cursor()
+    cur.execute('DELETE FROM public.trening;')
+    connection.commit()
+    return 'cleared all the data'

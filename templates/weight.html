@@ -2,7 +2,8 @@
 <html>
 <head>
     <title>Yo, weightliftin counter!</title>
-
+    <link rel="stylesheet" href="static/styles.css">
+    <script src="static/script.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -11,77 +12,40 @@
 <body>
 <form method="POST" action="/calculate">
     <p>
-        {{ form.bodypart.label }}<br>
-        {{ form.bodypart() }}
-        {% for error in form.bodypart.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
+        <label for="form_bodypart">Select body part</label>
+        <select name="bodypart" id="form_bodypart"></select>
     </p>
     <p>
-        {{ form.exercise.label }}<br>
-        {{ form.exercise() }}
-        {% for error in form.exercise.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
+        <label for="form_exercise">Select exercise</label>
+        <select name="exercise" id="form_exercise"></select>
     </p>
     <p>
-        {{ form.series.label }}<br>
-        {{ form.series() }}
-        {% for error in form.series.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
+        <label for="form_series">Number of series:</label>
+        <input type="number" id="form_series" name="quantity" min="1" max="6">
     </p>
     <p>
-        {{ form.reps.label }}<br>
-        {{ form.reps() }}
-        {% for error in form.reps.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
+        <label for="form_reps">Number of reps:</label>
+        <input type="number" id="form_reps" name="quantity" min="1" max="25">
     </p>
     <p>
-        {{ form.weight.label }}<br>
-        {{ form.weight() }}
-        {% for error in form.weight.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
+        <label for="form_weight">Weight:</label>
+        <input type="number" id="form_weight" name="quantity" min="1" max="150">
     </p>
     <p>
-        {{ form.submit.button }}<br>
-        {{ form.submit() }}
-        {% for error in form.submit.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
+        <button type="button" id="add_new_stats">Add</button>
     </p>
 </form>
 
-<form method="POST" action="/summary_day">
-    <p>
-        {{ form.summary.button }}<br>
-        {{ form.summary() }}
-        {% for error in form.summary.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-</form>
-<form method="POST" action="/edit">
-    <p>
-        {{ form.edit.button }}<br>
-        {{ form.edit() }}
-        {% for error in form.edit.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-</form>
+<form method="POST" action="/summary_menu">
+    <button type="button" id="summary_menu">Show summary menu</button>
+</form><br>
+
+<form method="POST" action="/show_all">
+    <button type="button" id="show_all">Show all</button>
+</form><br>
+
 <form method="POST" action="/clear">
-    <p>
-        {{ form.clear.button }}<br>
-        {{ form.clear() }}
-        {% for error in form.clear.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-        <b>Warning! It clears all the stored data!</b>
-    </p>
+    <button type="button" id="clear_data">Delete all storage data</button>
 </form>
 </body>
-
 </html>

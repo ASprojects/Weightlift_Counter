@@ -1,37 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
     <title>Yo, weightliftin counter!</title>
-
+    <link rel="stylesheet" href="static/styles.css">
+    <script src="static/script.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
-<form method="POST" name='test1' action="/sum_trening">
+<form method="POST" action="/sum_trening">
     <p>
-        {{ form.trening.label }}<br>
-        {{ form.trening() }}
-        {% for error in form.trening.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
+        <label for="form_trening_date">Select trening date</label>
+        <select name="trening_date" id="form_trening_date"></select>
     </p>
     <p>
-        {{ form.submit.button }}<br>
-        {{ form.submit() }}
-        {% for error in form.submit.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
+        <button type="button" id="submit_date">Go to date</button>
+    </p>
+    <p>
+        <button type="button" id="go_back">Back</button>
     </p>
 </form>
-<form method="POST" action="/">
-    <p>
-        {{ form.back.button }}<br>
-        {{ form.back() }}
-        {% for error in form.back.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-</form>
+
 </body>
 </html>
