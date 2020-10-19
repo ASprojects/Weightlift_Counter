@@ -1,6 +1,5 @@
 from flask import Flask, render_template
-from querries import showall, clear
-
+from querries import get_alldata_query, delete_alldata_query
 
 app = Flask(__name__, template_folder='templates')
 app.secret_key = 'Ziobro, przestań mi rodzinę prześladować'
@@ -19,15 +18,15 @@ def menu():
 
 # $$$ SINGLE BUTTONS $$$
 @app.route('/show_all', methods=['POST', 'GET'])
-def showall():
-    apply_showall = showall()
-    return apply_showall.to_html()
+def show_all():
+    apply_query = get_alldata_query()
+    return apply_query.to_html()
 
 
 @app.route('/clear', methods=['POST'])
 def clear():
-    apply_clear = clear()
-    return apply_clear
+    apply_query = delete_alldata_query()
+    return apply_query
 
 
 if __name__ == '__main__':

@@ -9,7 +9,7 @@ connection = pg2.connect(user="postgres",
                          database="weightlifting_counter")  # establishing connection
 
 
-def showall():
+def get_alldata_query():
     cur = connection.cursor()
     cur.execute('SELECT * FROM trening;')
     trenings_data = cur.fetchall()
@@ -17,7 +17,7 @@ def showall():
     return trenings_df
 
 
-def clear():
+def delete_alldata_query():
     cur = connection.cursor()
     cur.execute('DELETE FROM public.trening;')
     connection.commit()
