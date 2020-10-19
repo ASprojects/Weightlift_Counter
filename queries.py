@@ -6,7 +6,7 @@ connection = pg2.connect(user="postgres",
                          password=password,
                          host="127.0.0.1",
                          port="5432",
-                         database="weightlifting_counter")  # establishing connection
+                         database="weightlifting_counter")
 
 
 def get_alldata_query():
@@ -17,8 +17,18 @@ def get_alldata_query():
     return trenings_df
 
 
+"""
 def delete_alldata_query():
     cur = connection.cursor()
     cur.execute('DELETE FROM public.trening;')
     connection.commit()
+    return 'cleared all the data'
+
+$$$ Query with blocked commit $$$
+      |
+      V
+"""
+def delete_alldata_query():
+    cur = connection.cursor()
+    cur.execute('DELETE FROM public.trening;')
     return 'cleared all the data'

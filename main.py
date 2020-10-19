@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from querries import get_alldata_query, delete_alldata_query
+from queries import get_alldata_query, delete_alldata_query
 
 app = Flask(__name__, template_folder='templates')
 app.secret_key = 'Ziobro, przestań mi rodzinę prześladować'
@@ -23,10 +23,13 @@ def show_all():
     return apply_query.to_html()
 
 
-@app.route('/clear', methods=['POST'])
+@app.route('/clear', methods=['GET'])
 def clear():
     apply_query = delete_alldata_query()
     return apply_query
+
+
+# $$$ MENU BUTTON $$$
 
 
 if __name__ == '__main__':
