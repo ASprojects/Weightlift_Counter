@@ -1,5 +1,7 @@
 <!doctype html>
 <html>
+{% extends 'weight.html' %}
+{% block content %}
 <head>
     <title>Yo, weightliftin counter!</title>
     <link rel="stylesheet" href="static/styles.css">
@@ -8,18 +10,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
-    <div>
-        <p>
-            <label for="form_trening_date">Select trening date</label>
-            <select name="trening_date" id="form_trening_date"></select>
-        </p>
-        <p>
-            <button type="button" id="submit_date">Go to date</button>
-        </p>
-        <p>
-            <button type="button" id="go_back">Back</button>
-        </p>
-    </div>
-    <script src="static/script.js"></script>
+<div>
+    <p>
+        <label for="form_trening_date">Select trening date</label>
+        <select name="trening_date" id="form_trening_date"></select>
+    </p>
+    <p>
+        <button type="button" id="submit_date">Go to date</button>
+    </p>
+    <p>
+        <button type="button" id="go_back">Back</button>
+    </p>
+</div>
+<script src="static/script.js"></script>
 </body>
+{% endblock %}
 </html>
