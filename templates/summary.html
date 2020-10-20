@@ -1,28 +1,15 @@
-<!doctype html>
-<html>
-{% extends 'weight.html' %}
+{% extends "base.html" %}
+
 {% block content %}
-<head>
-    <title>Yo, weightliftin counter!</title>
-    <link rel="stylesheet" href="static/styles.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-</head>
-<body>
 <div>
     <p>
         <label for="form_trening_date">Select trening date</label>
         <select name="trening_date" id="form_trening_date"></select>
-    </p>
-    <p>
+        <br>
         <button type="button" id="submit_date">Go to date</button>
-    </p>
-    <p>
+        <br>
         <button type="button" id="go_back">Back</button>
     </p>
 </div>
-<script src="static/script.js"></script>
-</body>
+<script src="nazwa/script.js"></script>
 {% endblock %}
-</html>

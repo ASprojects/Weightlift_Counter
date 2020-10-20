@@ -1,51 +1,32 @@
-<!doctype html>
-<html>
-<head>
-    <title>Yo, weightliftin counter!</title>
-    <link rel="stylesheet" href="static/styles.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
 <div>
     <p>
         <label for="form_bodypart">Select body part</label>
         <select name="bodypart" id="form_bodypart"></select>
-    </p>
-    <p>
+        <br>
         <label for="form_exercise">Select exercise</label>
         <select name="exercise" id="form_exercise"></select>
-    </p>
-    <p>
+        <br>
         <label for="form_series">Number of series:</label>
         <input type="number" id="form_series" name="quantity" min="1" max="6">
-    </p>
-    <p>
+        <br>
         <label for="form_reps">Number of reps:</label>
         <input type="number" id="form_reps" name="quantity" min="1" max="25">
-    </p>
-    <p>
+        <br>
         <label for="form_weight">Weight:</label>
         <input type="number" id="form_weight" name="quantity" min="1" max="150">
-    </p>
-    <p>
+        <br>
         <button type="button" id="add_new_stats">Add</button>
     </p>
+    <p>
+        <button type="button" id="summary_menu">Show summary menu</button>
+        <br>
+        <button type="button" id="show_all">Show all</button>
+        <br>
+        <button type="button" id="clear_data">Delete all storage data</button>
+    </p>
 </div>
-<div>
-    <button type="button" id="summary_menu">Show summary menu</button>
-</div>
-<br>
-<div>
-    <button type="button" id="show_all">Show all</button>
-</div>
-<br>
-<div>
-    <button type="button" id="clear_data">Delete all storage data</button>
-</div>
-{% block content %}
+<script src="nazwa/script.js"></script>
 {% endblock %}
-<script src="static/script.js"></script>
-</body>
-</html>
