@@ -17,3 +17,10 @@ function go_to_clear_data() {
     }
 var find_clear_data = document.getElementById("clear_data")
 find_clear_data.addEventListener("click", go_to_clear_data);
+
+
+function calculate(){
+    var find_add_new_stats = document.getElementById("add_new_stats")
+    console.log(new_stats_value);
+    
+    }
