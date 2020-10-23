@@ -29,8 +29,8 @@ function add_option(option_name, button_name) {
     };
 
 
-var find_body_part = document.getElementById("form_bodypart");
-function get_body_part_choice() {
+var find_bodypart = document.getElementById("form_bodypart");
+function get_bodypart_choice() {
     const Http = new XMLHttpRequest();
     const url='/bodypart';
     Http.open("POST", url);
@@ -39,10 +39,27 @@ function get_body_part_choice() {
          if(Http.readyState === 4){
             var bodyparts_list = Http.responseText.split(';');
             console.log(bodyparts_list)
-            bodyparts_list.forEach(element => add_option(element, find_body_part));
-         };
-
+            bodyparts_list.forEach(element => add_option(element, find_bodypart));
+            };
+        };
     };
-};
 
-get_body_part_choice();
+get_bodypart_choice();
+
+
+var find_exercise = document.getElementById("form_exercise");
+function get_exercise_choice() {
+    const Http = new XMLHttpRequest();
+    const url='/exercise';
+    Http.open("POST", url);
+    Http.send();
+    Http.onreadystatechange = (e) => {
+         if(Http.readyState === 4){
+            var exercises_list = Http.responseText.split(';');
+            console.log(exercises_list)
+            exercises_list.forEach(element => add_option(element, find_exercise));
+            };
+        };
+    };
+
+find_bodypart.addEventListener("change", get_exercise_choice);

@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for
 from queries import get_alldata_query, delete_alldata_query
-from app_func import calculate, get_bodyparts_as_string
+from app_func import calculate, get_bodyparts_as_string, get_exercises_as_string
 
 
 app = Flask(__name__, template_folder='templates')
@@ -33,6 +33,11 @@ def clear():
 @app.route('/bodypart', methods=['POST'])
 def bodypart():
     return get_bodyparts_as_string()
+
+
+@app.route('/exercise', methods=['POST'])
+def exercise():
+    return get_exercises_as_string()
 
 
 ####################################
