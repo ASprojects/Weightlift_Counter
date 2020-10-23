@@ -30,6 +30,7 @@ function add_option(option_name, button_name) {
 
 
 var find_bodypart = document.getElementById("form_bodypart");
+
 function get_bodypart_choice() {
     const Http = new XMLHttpRequest();
     const url='/bodypart';
@@ -47,10 +48,15 @@ function get_bodypart_choice() {
 get_bodypart_choice();
 
 
+//####################################
+//### UNDONE, PLEASE WAIT, WORKING ###
+//####################################
 var find_exercise = document.getElementById("form_exercise");
+
 function get_exercise_choice() {
+    var exercise_value = find_bodypart.value;
     const Http = new XMLHttpRequest();
-    const url='/exercise';
+    const url='/exercise?bodypart=${exercise_value}';
     Http.open("POST", url);
     Http.send();
     Http.onreadystatechange = (e) => {
@@ -63,3 +69,6 @@ function get_exercise_choice() {
     };
 
 find_bodypart.addEventListener("change", get_exercise_choice);
+//####################################
+//######   UNDER CONSTRUCTION   ######
+//####################################

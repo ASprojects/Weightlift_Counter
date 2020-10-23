@@ -2,18 +2,23 @@ from flask import request
 import pandas as pd
 from queries import get_exercise_choice_df, get_bodypart_choice_df, insert_add_new_stats
 
-"""
-Select_df =
-"""
+
+def get_string_dataframe():
+    select_df = get_exercise_choice_df().merge(get_bodypart_choice_df())
+    select_exercise_df = select_df['exercise'].to_list()
+    select_bodypart_df = select_df['body_part'].to_list()
+    string_dataframe = pd.DataFrame({'body_part': select_bodypart_df, 'exercise': select_exercise_df})
+    return string_dataframe
+
 
 def get_bodyparts_as_string():
-    bodypart_list = get_bodypart_choice_df()['body_part'].to_list()
+    bodypart_list = get_string_dataframe()['body_part'].drop_duplicates().to_list()
     bodypart_string = ";".join(bodypart_list)
     return bodypart_string
 
 
 def get_exercises_as_string():
-    exercise_list = get_exercise_choice_df()['exercise'].to_list()
+    exercise_list = get_string_dataframe()['exercise'].to_list()
     exercise_string = ";".join(exercise_list)
     return exercise_string
 

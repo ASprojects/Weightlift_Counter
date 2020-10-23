@@ -52,5 +52,12 @@ def calculate():
 ####################################
 
 
+from app_func import get_string_dataframe
+@app.route('/test', methods=['POST', "GET"])
+def test():
+    print(get_string_dataframe())
+    return get_string_dataframe().to_html()
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
