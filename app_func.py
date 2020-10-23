@@ -2,7 +2,16 @@ from flask import request
 import pandas as pd
 from queries import get_exercise_choice_df, get_bodypart_choice_df, insert_add_new_stats
 
-"""
+
+def get_bodyparts_as_string():
+    bodypart_list = get_bodypart_choice_df()['body_part'].to_list()
+    bodypart_string = ";".join(bodypart_list)
+    return bodypart_string
+
+
+####################################
+### UNDONE, PLEASE WAIT, WORKING ###
+####################################
 def calculate():
     workday = {
         'series': int(request.form.getlist("series")[0]),
@@ -18,4 +27,6 @@ def calculate():
                                                             on=['body_part_id', 'body_part'],
                                                             how="left")
     return insert_add_new_stats(workday_df_trening)
-"""
+####################################
+######   UNDER CONSTRUCTION   ######
+####################################

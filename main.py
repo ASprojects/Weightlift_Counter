@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for
-from queries import get_alldata_query, delete_alldata_query, get_bodypart_choice_df
-#from app_func import calculate
+from queries import get_alldata_query, delete_alldata_query
+from app_func import calculate, get_bodyparts_as_string
 
 
 app = Flask(__name__, template_folder='templates')
@@ -21,29 +21,30 @@ def menu():
 # $$$ SINGLE BUTTONS $$$
 @app.route('/show_all', methods=['POST', 'GET'])
 def show_all():
-    apply_query = get_alldata_query()
-    return apply_query.to_html()
+    return get_alldata_query()
 
 
 @app.route('/clear', methods=['GET'])
 def clear():
-    apply_query = delete_alldata_query()
-    return apply_query
+    return delete_alldata_query()
 
 
-################################
-"""
+# $$$ SELECT BUTTONS $$$
+@app.route('/bodypart', methods=['POST'])
+def bodypart():
+    return get_bodyparts_as_string()
+
+
+####################################
+### UNDONE, PLEASE WAIT, WORKING ###
+####################################
 @app.route('/calculate', methods=['POST'])
 def calculate():
     calculate()
     return redirect(url_for("weight_homepage"))
-"""
-
-
-@app.route('/bodypart', methods=['POST'])
-def bodypart():
-    print(get_bodypart_choice_df()['body_part'].to_list())
-    return get_bodypart_choice_df()['body_part'].to_list()
+####################################
+######   UNDER CONSTRUCTION   ######
+####################################
 
 
 if __name__ == '__main__':

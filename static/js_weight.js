@@ -1,3 +1,4 @@
+// $$$ SINGLE BUTTONS $$$
 function go_to_menu() {
     window.location.href = "http://127.0.0.1:5001/summary_menu"
     }
@@ -19,9 +20,7 @@ var find_clear_data = document.getElementById("clear_data");
 find_clear_data.addEventListener("click", go_to_clear_data);
 
 
-///////////////////////////////////////////////////////////
-
-
+// $$$ SELECT BUTTONS $$$
 function add_option(option_name, button_name) {
     var option = document.createElement("option");
     option.text = option_name;
@@ -39,6 +38,7 @@ function get_body_part_choice() {
     Http.onreadystatechange = (e) => {
          if(Http.readyState === 4){
             var bodyparts_list = Http.responseText.split(';');
+            console.log(bodyparts_list)
             bodyparts_list.forEach(element => add_option(element, find_body_part));
          };
 
