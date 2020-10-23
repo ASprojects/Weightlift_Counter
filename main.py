@@ -1,5 +1,7 @@
-from flask import Flask, render_template
-from queries import get_alldata_query, delete_alldata_query
+from flask import Flask, render_template, redirect, url_for
+from queries import get_alldata_query, delete_alldata_query, get_bodypart_choice_df
+#from app_func import calculate
+
 
 app = Flask(__name__, template_folder='templates')
 app.secret_key = 'Ziobro, przestań mi rodzinę prześladować'
@@ -29,7 +31,19 @@ def clear():
     return apply_query
 
 
-# $$$ MENU BUTTON $$$
+################################
+"""
+@app.route('/calculate', methods=['POST'])
+def calculate():
+    calculate()
+    return redirect(url_for("weight_homepage"))
+"""
+
+
+@app.route('/bodypart', methods=['POST'])
+def bodypart():
+    print(get_bodypart_choice_df()['body_part'].to_list())
+    return get_bodypart_choice_df()['body_part'].to_list()
 
 
 if __name__ == '__main__':

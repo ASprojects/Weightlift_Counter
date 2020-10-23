@@ -2,6 +2,7 @@
 
 {% block content %}
 <div>
+    <form name="weightform" method="post" action="send.php">
     <table>
         <tr>
             <td><label for="form_bodypart">Select body part</label></td>
@@ -37,6 +38,7 @@
             <td colspan="2"><button type="button" id="clear_data">Delete all storage data</button></td>
         </tr>
     </table>
+    </form>
 </div>
 <script src="static/js_weight.js"></script>
 {% endblock %}
