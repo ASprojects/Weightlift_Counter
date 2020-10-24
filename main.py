@@ -45,32 +45,15 @@ def trening_date():
     return get_summary_datas_as_string()
 
 
-
-
-
-
-
-
-
-
+####################################
+### UNDONE, PLEASE WAIT, WORKING ###
 ####################################
 @app.route('/single_trening_summary', methods=['GET'])
 def single_trening():
     return 'under construction'
-####################################
-
-
-
-
-
-
-
-
-
 
 ####################################
-### UNDONE, PLEASE WAIT, WORKING ###
-####################################
+
 @app.route('/calculate', methods=['POST'])
 def calculate():
     calculate()

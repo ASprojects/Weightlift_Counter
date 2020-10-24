@@ -33,14 +33,6 @@ def get_summary_datas_as_string():
     return datas_string
 
 
-
-
-
-
-
-
-
-
 ####################################
 ### UNDONE, PLEASE WAIT, WORKING ###
 ####################################

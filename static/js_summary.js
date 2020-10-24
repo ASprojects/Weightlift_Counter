@@ -1,17 +1,8 @@
 function go_back_to_homepage() {
-    window.location.href = "http://127.0.0.1:5010/"
+    window.location.href = "/"
     }
 var find_go_back = document.getElementById("go_back");
 find_go_back.addEventListener("click", go_back_to_homepage);
-
-
-//######################################
-function go_to_single_trening() {
-    window.location.href = "http://127.0.0.1:5010/single_trening_summary"
-    }
-var find_submit_date = document.getElementById("submit_date");
-find_submit_date.addEventListener("click", go_to_single_trening);
-//######################################
 
 
 // $$$ SELECT OPTION $$$
@@ -33,10 +24,25 @@ function get_trening_date_choice() {
     Http.onreadystatechange = (e) => {
          if(Http.readyState === 4){
             var trening_datas_list = Http.responseText.split(';');
-            console.log(trening_datas_list)
             trening_datas_list.forEach(element => add_option(element, find_trening_date));
             };
         };
     };
 
 get_trening_date_choice();
+
+
+//####################################
+//### UNDONE, PLEASE WAIT, WORKING ###
+//####################################
+function go_to_single_trening() {
+    window.location.href = "/single_trening_summary"
+    var single_trening = document.getElementById("form_trening_date");
+    var test = single_trening.options[single_trening.selectedIndex].innerHTML;
+    console.log(test)
+    }
+var find_submit_date = document.getElementById("submit_date");
+find_submit_date.addEventListener("click", go_to_single_trening);
+//####################################
+//######   UNDER CONSTRUCTION   ######
+//####################################
