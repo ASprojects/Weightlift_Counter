@@ -29,7 +29,7 @@ def clear():
     return delete_alldata_query()
 
 
-# $$$ SELECT BUTTONS $$$
+# $$$ SELECT OPTION $$$
 @app.route('/bodypart', methods=['POST'])
 def bodypart():
     return get_bodyparts_as_string()
@@ -54,6 +54,21 @@ def trening_date():
 
 
 ####################################
+@app.route('/single_trening_summary', methods=['GET'])
+def single_trening():
+    return 'under construction'
+####################################
+
+
+
+
+
+
+
+
+
+
+####################################
 ### UNDONE, PLEASE WAIT, WORKING ###
 ####################################
 @app.route('/calculate', methods=['POST'])
@@ -65,12 +80,14 @@ def calculate():
 ####################################
 
 
-"""from app_func import get_df_from_two_tables
+"""
+from app_func import get_df_from_two_tables
 @app.route('/test', methods=['POST', "GET"])
 def test():
-    print(get_df_from_two_tables())
-    return get_df_from_two_tables().to_html()"""
+    print(get_trening_choice())
+    return get_df_from_two_tables().to_html()
+"""
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    app.run(debug=True, port=5010)

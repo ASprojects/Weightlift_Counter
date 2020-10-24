@@ -1,11 +1,20 @@
 function go_back_to_homepage() {
-    window.location.href = "http://127.0.0.1:5001/"
+    window.location.href = "http://127.0.0.1:5010/"
     }
 var find_go_back = document.getElementById("go_back");
 find_go_back.addEventListener("click", go_back_to_homepage);
 
 
-// $$$ SELECT BUTTONS $$$
+//######################################
+function go_to_single_trening() {
+    window.location.href = "http://127.0.0.1:5010/single_trening_summary"
+    }
+var find_submit_date = document.getElementById("submit_date");
+find_submit_date.addEventListener("click", go_to_single_trening);
+//######################################
+
+
+// $$$ SELECT OPTION $$$
 function add_option(option_name, button_name) {
     var option = document.createElement("option");
     option.text = option_name;

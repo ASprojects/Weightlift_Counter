@@ -42,19 +42,6 @@ def get_summary_datas_as_string():
 
 
 ####################################
-def show_available_trening_datas():
-    get_choice = str(request.form.getlist("trening"))
-    trening_choice = """SELECT * FROM trening_stats WHERE data='%s';""" % get_choice[2:-2]
-    cur = connection.cursor()
-    cur.execute(trening_choice)
-    trening_choice_data = cur.fetchall()
-    cols = [desc[0] for desc in cur.description]
-    trening_choice_df = pd.DataFrame(trening_choice_data, columns=cols)
-    return trening_choice_df.to_html()
-####################################
-
-
-####################################
 ### UNDONE, PLEASE WAIT, WORKING ###
 ####################################
 def calculate():
