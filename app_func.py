@@ -1,9 +1,9 @@
 from flask import request
 import pandas as pd
-from queries import get_exercise_choice_df, get_bodypart_choice_df, insert_add_new_stats
+from queries import get_exercise_choice_df, get_bodypart_choice_df, insert_add_new_stats, get_summary_menu_datas_df
 
 
-def get_string_dataframe():
+def get_df_from_two_tables():
     select_df = get_exercise_choice_df().merge(get_bodypart_choice_df())
     select_exercise_df = select_df['exercise'].to_list()
     select_bodypart_df = select_df['body_part'].to_list()
@@ -12,15 +12,46 @@ def get_string_dataframe():
 
 
 def get_bodyparts_as_string():
-    bodypart_list = get_string_dataframe()['body_part'].drop_duplicates().to_list()
+    bodypart_list = get_df_from_two_tables()['body_part'].drop_duplicates().to_list()
     bodypart_string = ";".join(bodypart_list)
     return bodypart_string
 
 
 def get_exercises_as_string():
-    exercise_list = get_string_dataframe()['exercise'].to_list()
+    exercise_list = get_df_from_two_tables()['exercise'].to_list()
     exercise_string = ";".join(exercise_list)
     return exercise_string
+
+
+def get_summary_datas_as_string():
+    datas_list = get_summary_menu_datas_df()['data'].to_list()
+    formated_datas_list=[]
+    for data in datas_list:
+        data = data.strftime("%Y-%m-%d")
+        formated_datas_list.append(data)
+    datas_string = ";".join(formated_datas_list)
+    return datas_string
+
+
+
+
+
+
+
+
+
+
+####################################
+def show_available_trening_datas():
+    get_choice = str(request.form.getlist("trening"))
+    trening_choice = """SELECT * FROM trening_stats WHERE data='%s';""" % get_choice[2:-2]
+    cur = connection.cursor()
+    cur.execute(trening_choice)
+    trening_choice_data = cur.fetchall()
+    cols = [desc[0] for desc in cur.description]
+    trening_choice_df = pd.DataFrame(trening_choice_data, columns=cols)
+    return trening_choice_df.to_html()
+####################################
 
 
 ####################################

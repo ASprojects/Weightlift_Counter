@@ -41,6 +41,22 @@ def get_bodypart_choice_df():
     return bodypart_df
 
 
+def get_summary_menu_datas_df():
+    cur = connection.cursor()
+    cur.execute('SELECT DISTINCT data FROM trening ORDER BY data ASC;')
+    summary_menu_data = cur.fetchall()
+    summary_menu_data_df = pd.DataFrame(summary_menu_data, columns=['data'])
+    return summary_menu_data_df
+
+
+
+
+
+
+
+
+
+
 ####################################
 ### UNDONE, PLEASE WAIT, WORKING ###
 ####################################

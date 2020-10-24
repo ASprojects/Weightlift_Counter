@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for
 from queries import get_alldata_query, delete_alldata_query
-from app_func import calculate, get_bodyparts_as_string, get_exercises_as_string
+from app_func import calculate, get_bodyparts_as_string, get_exercises_as_string, get_summary_datas_as_string
 
 
 app = Flask(__name__, template_folder='templates')
@@ -40,6 +40,19 @@ def exercise():
     return get_exercises_as_string()
 
 
+@app.route('/trening_date', methods=['POST'])
+def trening_date():
+    return get_summary_datas_as_string()
+
+
+
+
+
+
+
+
+
+
 ####################################
 ### UNDONE, PLEASE WAIT, WORKING ###
 ####################################
@@ -52,11 +65,11 @@ def calculate():
 ####################################
 
 
-from app_func import get_string_dataframe
+"""from app_func import get_df_from_two_tables
 @app.route('/test', methods=['POST', "GET"])
 def test():
-    print(get_string_dataframe())
-    return get_string_dataframe().to_html()
+    print(get_df_from_two_tables())
+    return get_df_from_two_tables().to_html()"""
 
 
 if __name__ == '__main__':
