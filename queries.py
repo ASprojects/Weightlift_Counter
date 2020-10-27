@@ -15,7 +15,7 @@ def get_alldata_query():
     cur.execute('SELECT * FROM trening;')
     trenings_data = cur.fetchall()
     trenings_df = pd.DataFrame(trenings_data, columns=['data', 'exercise', 'reps', 'series', 'weight'])
-    return trenings_df.to_html()
+    return trenings_df
 
 
 def delete_alldata_query():

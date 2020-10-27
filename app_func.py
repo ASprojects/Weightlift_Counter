@@ -1,6 +1,7 @@
 from flask import request
 import pandas as pd
-from queries import get_exercise_choice_df, get_bodypart_choice_df, insert_add_new_stats, get_summary_menu_datas_df
+from queries import get_exercise_choice_df, get_bodypart_choice_df, insert_add_new_stats, get_summary_menu_datas_df, get_alldata_query
+import datetime
 
 
 def get_df_from_two_tables():
@@ -19,9 +20,7 @@ def get_bodyparts_as_string():
 
 def get_exercises_as_string(bodypart_key):
     is_key = get_df_from_two_tables()['body_part'] == bodypart_key
-    print(is_key)
     exercise_df = get_df_from_two_tables()[is_key]
-    print(exercise_df.to_html())
     exercise_list = exercise_df['exercise'].to_list()
     exercise_string = ";".join(exercise_list)
     return exercise_string
@@ -35,6 +34,17 @@ def get_summary_datas_as_string():
         formated_datas_list.append(data)
     datas_string = ";".join(formated_datas_list)
     return datas_string
+
+
+def get_single_trening_df(data_key):
+    key = datetime.datetime.strptime(data_key, '%Y-%m-%d').strftime('(%Y, %m, %d)')
+    formated_key = datetime.datetime.strptime(key, '(%Y, %m, %d)').date()
+    is_key = get_alldata_query()['data'] == formated_key
+    single_trening_df = get_alldata_query()[is_key]
+    return single_trening_df
+
+
+
 
 
 ####################################

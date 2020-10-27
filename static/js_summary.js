@@ -15,7 +15,6 @@ function add_option(option_name, button_name) {
 
 
 var find_trening_date = document.getElementById("form_trening_date");
-
 function get_trening_date_choice() {
     const Http = new XMLHttpRequest();
     const url='/trening_date';
@@ -35,13 +34,21 @@ get_trening_date_choice();
 //####################################
 //### UNDONE, PLEASE WAIT, WORKING ###
 //####################################
-function go_to_single_trening() {
-    window.location.href = "/single_trening_summary"
-    var single_trening = document.getElementById("form_trening_date");
-    var test = single_trening.options[single_trening.selectedIndex].innerHTML;
-    console.log(test)
-}
 var find_submit_date = document.getElementById("submit_date");
+function go_to_single_trening() {
+    var trening_value = find_trening_date.value;
+    console.log(trening_value)
+    const Http = new XMLHttpRequest();
+    const url=`/single_trening?trening_date_var=${trening_value}`;   //wysyła zmienną bodypart_value pod nazwą bodypart_var na podstronę exercise
+    Http.open("POST", url);
+    Http.send();
+    Http.onreadystatechange = (e) => {
+         if(Http.readyState === 4){
+            var trening = Http.responseText;
+         };
+    };
+};
+
 find_submit_date.addEventListener("click", go_to_single_trening);
 //####################################
 //######   UNDER CONSTRUCTION   ######

@@ -2,6 +2,7 @@
 
 {% block content %}
 <div>
+    <form name="summaryform" method="post">
     <table>
         <tr>
             <td><label for="form_trening_date">Select trening date</label></td>
@@ -15,6 +16,7 @@
             <td colspan="2"><button type="button" id="go_back">Back</button></td>
         </tr>
     </table>
+    </form>
 </div>
 <script src="static/js_summary.js?random=<?php echo uniqid(); ?"></script>
 {% endblock %}

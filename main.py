@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request
 from queries import get_alldata_query, delete_alldata_query
-from app_func import calculate, get_bodyparts_as_string, get_exercises_as_string, get_summary_datas_as_string
+from app_func import calculate, get_bodyparts_as_string, get_exercises_as_string, get_summary_datas_as_string, get_single_trening_df
 
 
 app = Flask(__name__, template_folder='templates')
@@ -21,7 +21,7 @@ def menu():
 # $$$ SINGLE BUTTONS $$$
 @app.route('/show_all', methods=['POST', 'GET'])
 def show_all():
-    return get_alldata_query()
+    return get_alldata_query().to_html()
 
 
 @app.route('/clear', methods=['GET'])
@@ -46,15 +46,19 @@ def trening_date():
     return get_summary_datas_as_string()
 
 
+# $$$ FUNCTION BUTTONS $$$
+@app.route('/single_trening', methods=['POST'])
+def single_trening():
+    key = request.args.get('trening_date_var')
+    return get_single_trening_df(key)
+
+
+
+
+
 ####################################
 ### UNDONE, PLEASE WAIT, WORKING ###
 ####################################
-@app.route('/single_trening_summary', methods=['GET'])
-def single_trening():
-    return 'under construction'
-
-####################################
-
 @app.route('/calculate', methods=['POST'])
 def calculate():
     calculate()
