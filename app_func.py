@@ -17,8 +17,12 @@ def get_bodyparts_as_string():
     return bodypart_string
 
 
-def get_exercises_as_string():
-    exercise_list = get_df_from_two_tables()['exercise'].to_list()
+def get_exercises_as_string(bodypart_key):
+    is_key = get_df_from_two_tables()['body_part'] == bodypart_key
+    print(is_key)
+    exercise_df = get_df_from_two_tables()[is_key]
+    print(exercise_df.to_html())
+    exercise_list = exercise_df['exercise'].to_list()
     exercise_string = ";".join(exercise_list)
     return exercise_string
 

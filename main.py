@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, request
 from queries import get_alldata_query, delete_alldata_query
 from app_func import calculate, get_bodyparts_as_string, get_exercises_as_string, get_summary_datas_as_string
 
@@ -37,7 +37,8 @@ def bodypart():
 
 @app.route('/exercise', methods=['POST'])
 def exercise():
-    return get_exercises_as_string()
+    key = request.args.get('bodypart_var')
+    return get_exercises_as_string(key)
 
 
 @app.route('/trening_date', methods=['POST'])

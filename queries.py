@@ -49,14 +49,6 @@ def get_summary_menu_datas_df():
     return summary_menu_data_df
 
 
-
-
-
-
-
-
-
-
 ####################################
 ### UNDONE, PLEASE WAIT, WORKING ###
 ####################################
