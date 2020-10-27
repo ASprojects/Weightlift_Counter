@@ -1,11 +1,3 @@
-function removeOptions(remove_element) {
-    var i, L = remove_element.options.length - 1;
-    for(i = L; i >= 0; i--) {
-        remove_element.remove(i);
-   }
-}
-
-
 // $$$ SINGLE BUTTONS $$$
 function go_to_menu() {
     window.location.href = "/summary_menu"
@@ -54,11 +46,18 @@ function get_bodypart_choice() {
 find_bodypart.addEventListener("click", get_bodypart_choice, {once: true});
 
 
+function remove_options(remove_element) {
+    var i, L = remove_element.options.length - 1;
+    for(i = L; i >= 0; i--) {
+        remove_element.remove(i);
+   }
+}
+
+
 function get_exercise_choice() {
     var bodypart_value = find_bodypart.value;
     var find_exercise = document.getElementById("form_exercise");
-    removeOptions(find_exercise);
-    console.log(bodypart_value)
+    remove_options(find_exercise);
     const Http = new XMLHttpRequest();
     const url=`/exercise?bodypart_var=${bodypart_value}`;   //wysyła zmienną bodypart_value pod nazwą bodypart_var na podstronę exercise
     Http.open("POST", url);
@@ -66,7 +65,6 @@ function get_exercise_choice() {
     Http.onreadystatechange = (e) => {
          if(Http.readyState === 4){
             var exercises_list = Http.responseText.split(';');
-            console.log(exercises_list)
             exercises_list.forEach(element => add_option(element, find_exercise));
          };
     };
