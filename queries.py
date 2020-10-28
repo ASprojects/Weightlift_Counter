@@ -52,18 +52,18 @@ def get_summary_menu_datas_df():
 ####################################
 ### UNDONE, PLEASE WAIT, WORKING ###
 ####################################
-def insert_add_new_stats(df_name):
-    add_new_stats = """
-        INSERT INTO public.trening(data, exercise_id, reps, series, weight) VALUES ('%s', %s, %s, %s, %s);
-        """ % (str(datetime.date.today()),
-               df_name['exercise_id'][0],
-               df_name['reps'][0],
-               df_name['series'][0],
-               df_name['weight'][0])
-    cur = connection.cursor()
-    cur.execute(add_new_stats)
-    connection.commit()
-    return connection.commit()
+# def insert_add_new_stats(df_name):
+#     add_new_stats = """
+#         INSERT INTO public.trening(data, exercise_id, reps, series, weight) VALUES ('%s', %s, %s, %s, %s);
+#         """ % (str(datetime.date.today()),
+#                df_name['exercise_id'][0],
+#                df_name['reps'][0],
+#                df_name['series'][0],
+#                df_name['weight'][0])
+#     cur = connection.cursor()
+#     cur.execute(add_new_stats)
+#     connection.commit()
+#     return connection.commit()
 ####################################
 ######   UNDER CONSTRUCTION   ######
 ####################################

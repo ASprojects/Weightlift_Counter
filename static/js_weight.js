@@ -54,9 +54,9 @@ function remove_options(remove_element) {
 }
 
 
+var find_exercise = document.getElementById("form_exercise");
 function get_exercise_choice() {
     var bodypart_value = find_bodypart.value;
-    var find_exercise = document.getElementById("form_exercise");
     remove_options(find_exercise);
     const Http = new XMLHttpRequest();
     const url=`/exercise?bodypart_var=${bodypart_value}`;   //wysyła zmienną bodypart_value pod nazwą bodypart_var na podstronę exercise
@@ -71,3 +71,26 @@ function get_exercise_choice() {
 };
 
 find_bodypart.addEventListener("change", get_exercise_choice);
+
+
+// $$$ CALCULATE $$$
+//var find_add_new_stats = document.getElementById("add_new_stats")
+//function get_new_stats() {
+//    var choice_list = [bodypart_value = find_bodypart.value,
+//        exercise_value = find_exercise.value,
+//        series_value = document.getElementById("form_series").value,
+//        reps_value = document.getElementById("form_reps").value,
+//        weight_value = document.getElementById("form_weight").value]
+//    console.log(choice_list)
+//    const Http = new XMLHttpRequest();
+//    const url=`/calculate?choice_list_var=${choice_list}`;
+//    Http.open("POST", url);
+//    Http.send();
+//        Http.onreadystatechange = (e) => {
+//            if(Http.readyState === 4){
+//            var exercises_list = Http.responseText.split(';');
+//            };
+//        };
+//};
+//
+//find_add_new_stats.addEventListener("click", get_new_stats);

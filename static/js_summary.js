@@ -31,9 +31,6 @@ function get_trening_date_choice() {
 get_trening_date_choice();
 
 
-//####################################
-//### UNDONE, PLEASE WAIT, WORKING ###
-//####################################
 var find_submit_date = document.getElementById("submit_date");
 function go_to_single_trening() {
     var trening_value = find_trening_date.value;
@@ -50,6 +47,3 @@ function go_to_single_trening() {
 };
 
 find_submit_date.addEventListener("click", go_to_single_trening);
-//####################################
-//######   UNDER CONSTRUCTION   ######
-//####################################
