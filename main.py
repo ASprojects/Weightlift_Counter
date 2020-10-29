@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 from queries import get_alldata_query, delete_alldata_query
 from app_func import get_bodyparts_as_string, get_exercises_as_string, get_summary_datas_as_string, get_single_trening_df
-import requests
 
 
 app = Flask(__name__, template_folder='templates')
@@ -60,8 +59,7 @@ def single_trening():
 ####################################
 @app.route('/calculate', methods=['POST'])
 def calculate():
-    r = requests.get(url = 'http://127.0.0.1:5010/calculate', params = 'choice_list_var')
-    key = r.json()
+    key = request.data
     print(key)
     return 'key'
 ####################################
