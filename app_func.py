@@ -27,7 +27,7 @@ def get_exercises_as_string(bodypart_key):
 
 def get_summary_datas_as_string():
     datas_list = get_summary_menu_datas_df()['data'].to_list()
-    formated_datas_list=[]
+    formated_datas_list = []
     for data in datas_list:
         data = data.strftime("%Y-%m-%d")
         formated_datas_list.append(data)
@@ -40,5 +40,4 @@ def get_single_trening_df(data_key):
     formated_key = datetime.datetime.strptime(key, '(%Y, %m, %d)').date()
     is_key = get_alldata_query()['data'] == formated_key
     single_trening_df = get_alldata_query()[is_key]
-    print(single_trening_df.to_html())
-    return single_trening_df.to_html()
+    return single_trening_df.to_html(index=False)

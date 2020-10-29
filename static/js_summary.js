@@ -42,6 +42,9 @@ function go_to_single_trening() {
     Http.onreadystatechange = (e) => {
          if(Http.readyState === 4){
             var trening = Http.responseText;
+            var table_placeholder = document.getElementById('table_placeholder');
+            table_placeholder.innerHTML = '';
+            table_placeholder.insertAdjacentHTML('beforeend', trening);
          };
     };
 };

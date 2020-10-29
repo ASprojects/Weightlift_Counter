@@ -1,10 +1,12 @@
 from flask import Flask, render_template, request
 from queries import get_alldata_query, delete_alldata_query
 from app_func import get_bodyparts_as_string, get_exercises_as_string, get_summary_datas_as_string, get_single_trening_df
+import requests
 
 
 app = Flask(__name__, template_folder='templates')
 app.secret_key = 'Ziobro, przestań mi rodzinę prześladować'
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 
 # $$$ TEMPLATE SITES $$$
@@ -46,9 +48,6 @@ def trening_date():
     return get_summary_datas_as_string()
 
 
-####################################
-### UNDONE, PLEASE WAIT, WORKING ###
-####################################
 # $$$ FUNCTION BUTTONS $$$
 @app.route('/single_trening', methods=['POST'])
 def single_trening():
@@ -56,11 +55,15 @@ def single_trening():
     return get_single_trening_df(key)
 
 
-# @app.route('/calculate', methods=['POST'])
-# def calculate():
-#     key = request.getlist('choice_list')
-#     print(key)
-#     return 'key'
+####################################
+### UNDONE, PLEASE WAIT, WORKING ###
+####################################
+@app.route('/calculate', methods=['POST'])
+def calculate():
+    r = requests.get(url = 'http://127.0.0.1:5010/calculate', params = 'choice_list_var')
+    key = r.json()
+    print(key)
+    return 'key'
 ####################################
 ######   UNDER CONSTRUCTION   ######
 ####################################
