@@ -1,16 +1,16 @@
 import psycopg2 as pg2
-from config_pass import password
 import pandas as pd
 import datetime
 
-
-connection = pg2.connect(user="postgres",
-                         password=password,
-                         host="127.0.0.1",
+# This should be all stored in configuration or env of deploy server.
+connection = pg2.connect(user="weight_user",
+                         password="Q2wertyuiop99",
+                         host="192.168.1.252",
                          port="5432",
                          database="weightlifting_counter")
 
-
+# This should be just an internal function, it is not a good idea to retrieve all records at once.
+# Do pagination for it
 def get_alldata_query():
     cur = connection.cursor()
     cur.execute('SELECT * FROM trening;')
@@ -18,7 +18,7 @@ def get_alldata_query():
     trenings_df = pd.DataFrame(trenings_data, columns=['data', 'body part', 'exercise', 'reps', 'series', 'weight'])
     return trenings_df
 
-
+# Do not implement "delete" all from database, it is possible security flaw
 def delete_alldata_query():
     cur = connection.cursor()
     cur.execute('DELETE FROM public.trening;')
@@ -50,7 +50,7 @@ def get_summary_menu_datas_df():
     return summary_menu_data_df
 
 
-# ## UNDONE, PLEASE WAIT, WORKING ###
+# It is not working, aye? So just throw an exceptio for now.
 def insert_add_new_stats(res):
     add_new_stats = """
         INSERT INTO public.trening(data, exercise, series, reps, weight, body_part) VALUES ('%s', '%s', %s, %s, %s, '%s');
@@ -60,8 +60,8 @@ def insert_add_new_stats(res):
                res.get("reps_value", ""),
                res.get("weight_value", ""),
                res.get("bodypart_value", ""))
-    cur = connection.cursor()
-    cur.execute(add_new_stats)
-    connection.commit()
-    return
-# #####   UNDER CONSTRUCTION   ######
+    # cur = connection.cursor()
+    # cur.execute(add_new_stats)
+    # connection.commit()
+    raise NotImplementedError('This feature is not implemented')
+

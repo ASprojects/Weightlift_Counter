@@ -5,6 +5,7 @@ from app_func import get_bodyparts_as_string, get_exercises_as_string, get_summa
 
 
 app = Flask(__name__, template_folder='templates')
+# Here, read this: https://stackoverflow.com/questions/34902378/where-do-i-get-a-secret-key-for-flask
 app.secret_key = 'Ziobro, przestań mi rodzinę prześladować'
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
