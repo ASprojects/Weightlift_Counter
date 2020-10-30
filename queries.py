@@ -1,12 +1,12 @@
 import psycopg2 as pg2
-from config_pass import password
+from config_pass import password, host
 import pandas as pd
 import datetime
 
 
 connection = pg2.connect(user="postgres",
                          password=password,
-                         host="127.0.0.1",
+                         host=host,
                          port="5432",
                          database="weightlifting_counter")
 
@@ -15,7 +15,7 @@ def get_alldata_query():
     cur = connection.cursor()
     cur.execute('SELECT * FROM trening;')
     trenings_data = cur.fetchall()
-    trenings_df = pd.DataFrame(trenings_data, columns=['data', 'body part', 'exercise', 'reps', 'series', 'weight'])
+    trenings_df = pd.DataFrame(trenings_data, columns=['data', 'body part', 'exercise', 'series', 'reps', 'weight'])
     return trenings_df
 
 
@@ -50,18 +50,17 @@ def get_summary_menu_datas_df():
     return summary_menu_data_df
 
 
-# ## UNDONE, PLEASE WAIT, WORKING ###
-def insert_add_new_stats(res):
+def insert_add_new_stats(req):
     add_new_stats = """
-        INSERT INTO public.trening(data, exercise, series, reps, weight, body_part) VALUES ('%s', '%s', %s, %s, %s, '%s');
+        INSERT INTO public.trening(data, body_part, exercise, series, reps, weight) 
+        VALUES ('%s', '%s', '%s', %s, %s, %s);
         """ % (str(datetime.date.today()),
-               res.get("exercise_value", ""),
-               res.get("series_value", ""),
-               res.get("reps_value", ""),
-               res.get("weight_value", ""),
-               res.get("bodypart_value", ""))
+               req.get("bodypart_value", ""),
+               req.get("exercise_value", ""),
+               req.get("series_value", ""),
+               req.get("reps_value", ""),
+               req.get("weight_value", ""))
     cur = connection.cursor()
     cur.execute(add_new_stats)
     connection.commit()
-    return
-# #####   UNDER CONSTRUCTION   ######
+    return 'ok'

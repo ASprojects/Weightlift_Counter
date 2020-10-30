@@ -1,11 +1,12 @@
-from flask import Flask, render_template, request, jsonify, make_response
+from flask import Flask, render_template, request
 from queries import get_alldata_query, delete_alldata_query, insert_add_new_stats
 from app_func import get_bodyparts_as_string, get_exercises_as_string, get_summary_datas_as_string, \
     get_single_trening_df
+from config_pass import secret_key
 
 
 app = Flask(__name__, template_folder='templates')
-app.secret_key = 'Ziobro, przestań mi rodzinę prześladować'
+app.secret_key = secret_key
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 

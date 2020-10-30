@@ -73,7 +73,6 @@ function get_exercise_choice() {
 find_bodypart.addEventListener("change", get_exercise_choice);
 
 
-//### UNDONE, PLEASE WAIT, WORKING ###
 // $$$ CALCULATE $$$
 var find_add_new_stats = document.getElementById("add_new_stats")
 function get_new_stats() {
@@ -93,16 +92,6 @@ function get_new_stats() {
             "content-type": "application/json"
         })
     })
-    .then(function (response) {
-        if (response.status !== 200) {
-            console.log(`Response status was not 200, it was ${response.status}`);
-            return ;
-        }
-        response.json().then(function (data) {
-            console.log(data)
-        })
-    })
 };
 
 find_add_new_stats.addEventListener("click", get_new_stats);
-//######   UNDER CONSTRUCTION   ######
