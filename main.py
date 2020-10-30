@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request
-from queries import get_alldata_query, delete_alldata_query
-from app_func import get_bodyparts_as_string, get_exercises_as_string, get_summary_datas_as_string, get_single_trening_df
+from flask import Flask, render_template, request, jsonify, make_response
+from queries import get_alldata_query, delete_alldata_query, insert_add_new_stats
+from app_func import get_bodyparts_as_string, get_exercises_as_string, get_summary_datas_as_string, \
+    get_single_trening_df
 
 
 app = Flask(__name__, template_folder='templates')
@@ -54,17 +55,13 @@ def single_trening():
     return get_single_trening_df(key)
 
 
-####################################
-### UNDONE, PLEASE WAIT, WORKING ###
-####################################
+# ## UNDONE, PLEASE WAIT, WORKING ###
 @app.route('/calculate', methods=['POST'])
 def calculate():
-    key = request.data
-    print(key)
-    return 'key'
-####################################
-######   UNDER CONSTRUCTION   ######
-####################################
+    req = request.get_json()
+    print(req)
+    return insert_add_new_stats(req)
+# #####   UNDER CONSTRUCTION   ######
 
 
 @app.route('/test', methods=['POST', "GET"])

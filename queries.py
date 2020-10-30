@@ -3,6 +3,7 @@ from config_pass import password
 import pandas as pd
 import datetime
 
+
 connection = pg2.connect(user="postgres",
                          password=password,
                          host="127.0.0.1",
@@ -14,14 +15,14 @@ def get_alldata_query():
     cur = connection.cursor()
     cur.execute('SELECT * FROM trening;')
     trenings_data = cur.fetchall()
-    trenings_df = pd.DataFrame(trenings_data, columns=['data', 'exercise', 'reps', 'series', 'weight'])
+    trenings_df = pd.DataFrame(trenings_data, columns=['data', 'body part', 'exercise', 'reps', 'series', 'weight'])
     return trenings_df
 
 
 def delete_alldata_query():
     cur = connection.cursor()
     cur.execute('DELETE FROM public.trening;')
-#    connection.commit()                        <=== blocked for now
+#    connection.commit()                        # <=== blocked for now
     return 'cleared all the data'
 
 
@@ -49,21 +50,18 @@ def get_summary_menu_datas_df():
     return summary_menu_data_df
 
 
-####################################
-### UNDONE, PLEASE WAIT, WORKING ###
-####################################
-# def insert_add_new_stats(df_name):
-#     add_new_stats = """
-#         INSERT INTO public.trening(data, exercise_id, reps, series, weight) VALUES ('%s', %s, %s, %s, %s);
-#         """ % (str(datetime.date.today()),
-#                df_name['exercise_id'][0],
-#                df_name['reps'][0],
-#                df_name['series'][0],
-#                df_name['weight'][0])
-#     cur = connection.cursor()
-#     cur.execute(add_new_stats)
-#     connection.commit()
-#     return connection.commit()
-####################################
-######   UNDER CONSTRUCTION   ######
-####################################
+# ## UNDONE, PLEASE WAIT, WORKING ###
+def insert_add_new_stats(res):
+    add_new_stats = """
+        INSERT INTO public.trening(data, exercise, series, reps, weight, body_part) VALUES ('%s', '%s', %s, %s, %s, '%s');
+        """ % (str(datetime.date.today()),
+               res.get("exercise_value", ""),
+               res.get("series_value", ""),
+               res.get("reps_value", ""),
+               res.get("weight_value", ""),
+               res.get("bodypart_value", ""))
+    cur = connection.cursor()
+    cur.execute(add_new_stats)
+    connection.commit()
+    return
+# #####   UNDER CONSTRUCTION   ######

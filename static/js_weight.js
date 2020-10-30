@@ -73,10 +73,8 @@ function get_exercise_choice() {
 find_bodypart.addEventListener("change", get_exercise_choice);
 
 
-// $$$ CALCULATE $$$
-//####################################
 //### UNDONE, PLEASE WAIT, WORKING ###
-//####################################
+// $$$ CALCULATE $$$
 var find_add_new_stats = document.getElementById("add_new_stats")
 function get_new_stats() {
     var choice_dict = {
@@ -87,28 +85,24 @@ function get_new_stats() {
         weight_value : document.getElementById("form_weight").value,
     };
     console.log(choice_dict)
-    const request = new Request(`/exercise`, {method: 'POST', body: 'choice_dict'})
-    const url = request.url;
-    const method = request.method;
-    const credentials = request.credentials;
-    const bodyUsed = request.bodyUsed;
-    fetch(request)
-        .then(response => {
-            if (response.status === 200) {
-                return response.json();
-            } else {
-            throw new Error('Something went wrong on api server!');
-            }
+    fetch(`${window.origin}/calculate`, {
+        method: "POST",
+        body: JSON.stringify(choice_dict),
+        cache: "no-cache",
+        headers: new Headers({
+            "content-type": "application/json"
         })
-        .then(response => {
-            console.debug(response);
-            // ...
-        }).catch(error => {
-            console.error(error);
-        });
+    })
+    .then(function (response) {
+        if (response.status !== 200) {
+            console.log(`Response status was not 200, it was ${response.status}`);
+            return ;
+        }
+        response.json().then(function (data) {
+            console.log(data)
+        })
+    })
 };
 
 find_add_new_stats.addEventListener("click", get_new_stats);
-//####################################
 //######   UNDER CONSTRUCTION   ######
-//####################################
