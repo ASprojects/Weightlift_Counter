@@ -60,8 +60,8 @@ def insert_add_new_stats(res):
                res.get("reps_value", ""),
                res.get("weight_value", ""),
                res.get("bodypart_value", ""))
-    # cur = connection.cursor()
-    # cur.execute(add_new_stats)
-    # connection.commit()
-    raise NotImplementedError('This feature is not implemented')
+    cur = connection.cursor()
+    cur.execute(add_new_stats)
+    connection.commit()
+    return
 

@@ -93,10 +93,11 @@ function get_new_stats() {
             "content-type": "application/json"
         })
     })
-    .then(function (response) {
+    .then(async function (response) {
         if (response.status !== 200) {
-            console.log(`Response status was not 200, it was ${response.status}`);
-            return ;
+            //console.log(`Response status was not 200, it was ${response.status}`);
+            document.getElementById('message-output').innerText = await response.text();
+            return;
         }
         response.json().then(function (data) {
             console.log(data)

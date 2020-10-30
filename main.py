@@ -59,9 +59,9 @@ def single_trening():
 # ## UNDONE, PLEASE WAIT, WORKING ###
 @app.route('/calculate', methods=['POST'])
 def calculate():
+    # As of the fact, this is not implemented, just return HTTP 502
     req = request.get_json()
-    print(req)
-    return insert_add_new_stats(req)
+    return 'Not implemented', 501
 # #####   UNDER CONSTRUCTION   ######
 
 
