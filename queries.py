@@ -26,7 +26,7 @@ def delete_alldata_query():
                              database="weightlifting_counter")
     cur = connection.cursor()
     cur.execute('DELETE FROM public.trening;')
-#    connection.commit()                        # <=== blocked for now
+    connection.commit()
     connection.close()
     return 'cleared all the data'
 

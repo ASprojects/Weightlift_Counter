@@ -38,7 +38,7 @@ function go_to_single_trening() {
     var trening_value = find_trening_date.value;
     console.log(trening_value)
     const Http = new XMLHttpRequest();
-    const url=`/single_trening?trening_date_var=${trening_value}`;   //wysyła zmienną bodypart_value pod nazwą bodypart_var na podstronę exercise
+    const url=`/single_trening?trening_date_var=${trening_value}`;
     Http.open("POST", url);
     Http.send();
     Http.onreadystatechange = (e) => {

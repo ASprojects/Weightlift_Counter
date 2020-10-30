@@ -19,7 +19,7 @@ function go_to_clear_data() {
     window.location.href = "/clear"
 }
 var find_clear_data = document.getElementById("clear_data");
-find_clear_data.addEventListener("click", go_to_clear_data);
+//find_clear_data.addEventListener("click", go_to_clear_data);      <== blocked for a while
 
 
 // $$$ SELECT OPTION $$$
@@ -61,7 +61,7 @@ function get_exercise_choice() {
     var bodypart_value = find_bodypart.value;
     remove_options(find_exercise);
     const Http = new XMLHttpRequest();
-    const url=`/exercise?bodypart_var=${bodypart_value}`;   //wysyła zmienną bodypart_value pod nazwą bodypart_var na podstronę exercise
+    const url=`/exercise?bodypart_var=${bodypart_value}`;
     Http.open("POST", url);
     Http.send();
     Http.onreadystatechange = (e) => {
