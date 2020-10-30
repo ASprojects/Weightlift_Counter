@@ -1,3 +1,4 @@
+// $$$ GO BACK BUTTON $$$
 function go_back_to_homepage() {
     window.location.href = "/"
 }
@@ -31,6 +32,7 @@ function get_trening_date_choice() {
 get_trening_date_choice();
 
 
+// $$$ GO TO DATE BUTTON $$$
 var find_submit_date = document.getElementById("submit_date");
 function go_to_single_trening() {
     var trening_value = find_trening_date.value;

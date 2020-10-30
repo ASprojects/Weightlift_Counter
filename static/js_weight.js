@@ -1,4 +1,4 @@
-// $$$ SINGLE BUTTONS $$$
+// $$$ GO TO SUMMARY MENU BUTTON $$$
 function go_to_menu() {
     window.location.href = "/summary_menu"
 }
@@ -6,6 +6,7 @@ var find_summary_menu = document.getElementById("summary_menu");
 find_summary_menu.addEventListener("click", go_to_menu);
 
 
+// $$$ SHOW ALL BUTTON $$$
 function go_to_show_all() {
     window.location.href = "/show_all"
 }
@@ -13,6 +14,7 @@ var find_show_all = document.getElementById("show_all");
 find_show_all.addEventListener("click", go_to_show_all);
 
 
+// $$$ CLEAR ALL BUTTON $$$
 function go_to_clear_data() {
     window.location.href = "/clear"
 }
@@ -73,7 +75,7 @@ function get_exercise_choice() {
 find_bodypart.addEventListener("change", get_exercise_choice);
 
 
-// $$$ CALCULATE $$$
+// $$$ CALCULATE BUTTON $$$
 var find_add_new_stats = document.getElementById("add_new_stats")
 function get_new_stats() {
     var choice_dict = {

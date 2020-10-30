@@ -56,15 +56,13 @@ def single_trening():
     return get_single_trening_df(key)
 
 
-# ## UNDONE, PLEASE WAIT, WORKING ###
 @app.route('/calculate', methods=['POST'])
 def calculate():
     req = request.get_json()
-    print(req)
     return insert_add_new_stats(req)
-# #####   UNDER CONSTRUCTION   ######
 
 
+# $$$ TEST $$$
 @app.route('/test', methods=['POST', "GET"])
 def test():
     pass
