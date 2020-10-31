@@ -3,6 +3,7 @@ from queries import get_alldata_query, delete_alldata_query, insert_add_new_stat
 from app_func import get_bodyparts_as_string, get_exercises_as_string, get_summary_datas_as_string, \
     get_single_trening_df
 from config_pass import secret_key
+import json
 
 
 app = Flask(__name__, template_folder='templates')
@@ -58,7 +59,8 @@ def single_trening():
 
 @app.route('/calculate', methods=['POST'])
 def calculate():
-    req = request.get_json()
+    data = request.data
+    req = json.loads(data)
     print(req)
     return insert_add_new_stats(req)
 
