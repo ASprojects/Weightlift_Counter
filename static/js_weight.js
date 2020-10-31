@@ -86,14 +86,22 @@ function get_new_stats() {
         weight_value : document.getElementById("form_weight").value,
     };
     console.log(choice_dict)
-    fetch(`${window.origin}/calculate`, {
+    fetch('http://127.0.0.1:5010/calculate', {
         method: "POST",
+        headers: {
+            "content-type": "application/json",
+        },
         body: JSON.stringify(choice_dict),
         cache: "no-cache",
-        headers: new Headers({
-            "content-type": "application/json"
-        })
+        mode: 'no-cors',
     })
+    .then(response => response.json())
+    .then(choice_dict => {
+    console.log('Success:', choice_dict);
+    })
+    .catch((error) => {
+        console.error('An error occured:', error);
+    });
 };
 
 find_add_new_stats.addEventListener("click", get_new_stats);

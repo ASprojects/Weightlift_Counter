@@ -59,6 +59,7 @@ def single_trening():
 @app.route('/calculate', methods=['POST'])
 def calculate():
     req = request.get_json()
+    print(req)
     return insert_add_new_stats(req)
 
 
